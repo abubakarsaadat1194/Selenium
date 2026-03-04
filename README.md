@@ -1,8 +1,4 @@
-Here is a clean professional README.md you can put in your GitHub repository that contains both Selenium projects (Speed Test + Google Calculator automation).
 
-You can copy-paste it directly.
-
-:::writing{variant=“standard” id=“48216”}
 
 Selenium Web Automation Projects
 
