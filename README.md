@@ -1,155 +1,262 @@
-# Selenium Web Automation Projects
+# Selenium Web Automation Tests
 
-This repository contains two Selenium automation projects developed using **Java, Gradle, and JUnit**. These projects demonstrate automated browser testing using Selenium WebDriver.
+This repository contains **automated web tests developed using Selenium WebDriver and JUnit**.  
+The project demonstrates browser automation by interacting with Google services such as:
 
----
+- Google Internet Speed Test
+- Google Calculator
 
-## Projects Included
-
-### 1. Google Calculator Automation
-
-This project automates the Google Calculator using Selenium WebDriver. It performs arithmetic operations and verifies that the output displayed by the calculator is correct.
-
-#### Features
-- Opens Google in a browser
-- Searches for the calculator
-- Performs automated button clicks
-- Validates results using **JUnit assertions**
-- Uses **WebDriverWait** for dynamic elements
-
-#### Example Test Case
-Input:
-
-```
-63 × 21
-```
-
-Expected Result:
-
-```
-1323
-```
-
-The test verifies that the calculator displays the correct result.
+The automated tests simulate real user behavior, verify UI interactions, and validate application functionality using **explicit waits and WebDriver locators**.
 
 ---
 
-### 2. Internet Speed Test Automation
+# Table of Contents
 
-This project automates a web-based speed test using Selenium WebDriver.
-
-#### Features
-- Opens the speed test website
-- Starts the internet speed test automatically
-- Waits for the test to complete
-- Extracts and prints:
-  - Download speed
-  - Upload speed
-  - Ping (optional)
-
-This demonstrates how Selenium can interact with dynamic elements that update over time.
+- [Project Overview](#project-overview)
+- [Technologies Used](#technologies-used)
+- [Test Scenarios](#test-scenarios)
+- [Project Structure](#project-structure)
+- [Setup Instructions](#setup-instructions)
+- [Running the Tests](#running-the-tests)
+- [Key Selenium Concepts Demonstrated](#key-selenium-concepts-demonstrated)
+- [Future Improvements](#future-improvements)
+- [Author](#author)
 
 ---
 
-## Technologies Used
+# Project Overview
 
-- Java 21
+This project demonstrates **web automation testing using Selenium WebDriver** with the **JUnit testing framework**.
+
+The automated tests perform tasks such as:
+
+- Searching on Google
+- Running a Google internet speed test
+- Performing calculations using Google Calculator
+- Validating expected results using assertions
+- Using explicit waits to synchronize test execution
+
+The goal of this project is to showcase how Selenium can be used to automate real-world browser interactions and validate application behavior.
+
+---
+
+# Technologies Used
+
+- Java
 - Selenium WebDriver
-- JUnit 4
-- Gradle
-- Eclipse IDE
+- JUnit
+- ChromeDriver / FirefoxDriver
+- WebDriverWait (Explicit Waits)
 
 ---
 
-## Project Structure
+# Test Scenarios
 
-```
-Selenium
-│
-├── src
-│   ├── main
-│   │   └── java
-│   │
-│   └── test
-│       └── java
-│           └── webdrivertest
-│               ├── WebTesting.java
-│               └── SpeedTest.java
-│
-├── drivers
-├── build.gradle.kts
-├── settings.gradle.kts
-└── README.md
-```
+The project includes the following automated test cases.
 
 ---
 
-## Setup Instructions
+## 1. Google Internet Speed Test Automation
 
-### 1. Clone the repository
+This test performs the following steps:
 
-```
-git clone https://github.com/your-username/selenium-web-automation.git
-```
+1. Launches Google in the browser
+2. Accepts the cookie dialog (if present)
+3. Searches for **"internet speed test"**
+4. Clicks the **Run Speed Test** button
+5. Waits for the test to complete
+6. Extracts and prints:
 
-### 2. Open the project
+   - Download speed
+   - Upload speed
 
-Open the project in **Eclipse IDE**.
+Example output:
 
-### 3. Install dependencies
-
-Gradle will automatically download the required dependencies.
-
-You can also refresh manually:
-
-```
-Right Click Project → Gradle → Refresh Gradle Project
-```
+    Your downlink throughput is: 85.23 Mbps
+    Your uplink throughput is: 21.17 Mbps
 
 ---
 
-## Running the Tests
+## 2. Google Calculator Automation
 
-Tests are executed using **JUnit**.
+This test automates Google Calculator and verifies mathematical operations.
 
-1. Right click the test class (e.g., `WebTesting.java`)
-2. Select:
+### Test Case 1
 
-```
-Run As → JUnit Test
-```
+Steps:
 
-The browser will open automatically and execute the automation steps.
-
----
-
-## Learning Objectives
-
-These projects demonstrate:
-
-- Browser automation using Selenium
-- Writing automated test cases with JUnit
-- Handling dynamic web elements
-- Using explicit waits (`WebDriverWait`)
-- Structuring Java automation projects
+1. Search for **Calculator**
+2. Enter `7 + 2`
+3. Verify the result equals **9**
+4. Clear the calculator
 
 ---
 
-## Author
+### Test Case 2
 
-**Abu Bakar Saadat**
+Steps:
 
-Master's in Electrical and Information Technology  
-Karlsruhe Institute of Technology (KIT)
-
-Specialization:
-- Software Quality Assurance
-- Test Automation
-- Selenium
-- Networking Systems
+1. Perform calculation **87 + 52**
+2. Verify the result equals **139**
+3. Clear the calculator
 
 ---
 
-## License
+### Test Case 3
 
-This project is for **educational purposes**.
+Steps:
+
+1. Perform multiplication **63 × 21**
+2. Verify the result equals **1323**
+
+---
+
+# Project Structure
+
+    selenium-webdriver-tests
+    │
+    ├── src
+    │   └── webdrivertest
+    │       └── main.java
+    │
+    ├── drivers
+    │   ├── chromedriver
+    │   └── geckodriver
+    │
+    └── README.md
+
+### Description
+
+| Folder/File | Description |
+|-------------|-------------|
+| src/webdrivertest | Contains Selenium test classes |
+| main.java | Main test implementation |
+| drivers | Browser drivers for Chrome and Firefox |
+| README.md | Project documentation |
+
+---
+
+# Setup Instructions
+
+## 1 Install Java
+
+Verify installation:
+
+    java -version
+
+---
+
+## 2 Install Chrome Browser
+
+Download Chrome:
+
+https://www.google.com/chrome/
+
+---
+
+## 3 Download ChromeDriver
+
+Download ChromeDriver from:
+
+https://chromedriver.chromium.org/
+
+Place it in your project **drivers folder**.
+
+---
+
+## 4 Add Selenium Dependencies
+
+If using Maven:
+
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.x.x</version>
+    </dependency>
+
+---
+
+## 5 Configure Driver Path
+
+Ensure the driver is configured in your WebTesting class:
+
+    System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
+
+---
+
+# Running the Tests
+
+Run the tests using your IDE or JUnit runner.
+
+Example:
+
+    Run as → JUnit Test
+
+The browser will open and execute the automated scenarios.
+
+---
+
+# Key Selenium Concepts Demonstrated
+
+This project demonstrates several important Selenium automation concepts:
+
+### WebDriver Initialization
+Launching browsers such as Chrome or Firefox.
+
+### Element Locators
+
+Using different locator strategies:
+
+- By.id
+- By.name
+- By.xpath
+- By.cssSelector
+
+### Explicit Waits
+
+Using WebDriverWait and ExpectedConditions to synchronize tests.
+
+Example:
+
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("q")));
+
+### Assertions
+
+Using JUnit assertions to validate expected outcomes.
+
+Example:
+
+    assertEquals("9", calculatorOutput);
+
+---
+
+# Future Improvements
+
+Possible improvements for this project:
+
+- Implement **Page Object Model (POM)**
+- Add **TestNG framework**
+- Generate **automated test reports**
+- Add **parallel test execution**
+- Integrate with **CI/CD pipelines**
+
+---
+
+# Author
+
+Abu Bakar Saadat
+
+QA Automation Engineer
+
+Skills:
+
+- Selenium WebDriver
+- Playwright Automation
+- Appium Mobile Testing
+- JMeter Performance Testing
+- Python and Java Automation
+
+---
+
+⭐ If you found this project useful, consider giving it a star!
